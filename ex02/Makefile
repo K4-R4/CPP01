@@ -2,8 +2,8 @@ CXX      := c++
 CXXFLAGS := -g -MMD -MP -Wall -Wextra -Werror -std=c++98
 DFLAGS   := -fsanitize=address -fsanitize=undefined -fsanitize=bounds
 INCLUDE  := -I .
-NAME     := zombie_horde
-SRCS     := main.cpp Zombie.cpp zombieHorde.cpp
+NAME     := reference
+SRCS     := main.cpp
 OBJS     := $(SRCS:.cpp=.o)
 DEPENDS  := $(OBJS:.o=.d)
 
