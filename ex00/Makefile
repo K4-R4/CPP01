@@ -27,8 +27,11 @@ debug:
 	make DEBUG=1
 
 valgrind: re
-    valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME)
+
+lint:
+	cpplint $(CPPLINT_FILTERS) $(SRCS) $(shell find . -type f -name '*.hpp -print')
 
 -include $(DEPENDS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re valgrind lint
