@@ -3,7 +3,7 @@ CXXFLAGS := -g -MMD -MP -Wall -Wextra -Werror -std=c++98
 DFLAGS   := -fsanitize=address -fsanitize=undefined -fsanitize=bounds
 INCLUDE  := -I .
 NAME     := zombie
-SRCS     := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS     := main.cpp Zombie.cpp zombieHorde.cpp
 OBJS     := $(SRCS:.cpp=.o)
 DEPENDS  := $(OBJS:.o=.d)
 
