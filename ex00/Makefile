@@ -26,6 +26,9 @@ re: fclean all
 debug:
 	make DEBUG=1
 
+valgrind: re
+    valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME)
+
 -include $(DEPENDS)
 
 .PHONY: all clean fclean re
