@@ -1,3 +1,6 @@
 out
 out.replace
 test.replace
+*.d
+*.o
+*.replace

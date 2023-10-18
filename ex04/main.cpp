@@ -30,11 +30,15 @@ std::string replaceString(std::string line, std::string oldString, std::string n
 }
 
 bool replaceAndCreateFile(std::string srcFileName, std::string oldString, std::string newString) {
-	std::ifstream srcFile(srcFileName);
-	std::ofstream destFile(srcFileName + ".replace");
 	std::string line;
 
-	if (srcFile.fail() || destFile.fail()) {
+	std::ifstream srcFile(srcFileName);
+	if (srcFile.fail()) {
+		std::cerr << "Failed to open file" << std::endl;
+		return (false);
+	}
+	std::ofstream destFile(srcFileName + ".replace");
+	if (destFile.fail()) {
 		std::cerr << "Failed to open file" << std::endl;
 		return (false);
 	}
