@@ -18,8 +18,6 @@
 
 class Harl {
 private:
-	int logLevel;
-
 	void debug();
 
 	void info();
@@ -28,10 +26,9 @@ private:
 
 	void error();
 
-	void invalid();
-public:
-	Harl(std::string logLevel);
+	void insignificant();
 
+public:
 	void complain(std::string level);
 };
 

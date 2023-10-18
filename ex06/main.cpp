@@ -14,16 +14,13 @@
 #include "Harl.hpp"
 
 int main(int argc, char **argv) {
+	Harl harl;
+
 	if (argc != 2) {
 		std::cerr << "Invalid number of arguments" << std::endl;
 		std::cerr << "Usage: ./harlFilter {logLevel}" << std::endl;
 		exit(1);
 	}
 	std::string level = argv[1];
-	Harl harl(level);
-
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
+	harl.complain(level);
 }

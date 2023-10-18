@@ -13,19 +13,6 @@
 #include <iostream>
 #include "Harl.hpp"
 
-Harl::Harl(std::string level) {
-	const int MAX_LEVEL = 4;
-	const std::string avail_levels[MAX_LEVEL] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	for (int i = 0; i < MAX_LEVEL; i++) {
-		if (level == avail_levels[i]) {
-			this->logLevel = i;
-			return;
-		}
-	}
-	this->logLevel = -1;
-	this->invalid();
-}
-
 void Harl::debug() {
 	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!"
@@ -51,22 +38,30 @@ void Harl::error() {
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::invalid() {
+void Harl::insignificant() {
 	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
 
 void Harl::complain(std::string level) {
+	int logLevel;
 	const int MAX_LEVEL = 4;
 	const std::string avail_levels[MAX_LEVEL] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*avail_funcs[MAX_LEVEL])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	if (this->logLevel == -1) {
-		return;
+	for (logLevel = 0; logLevel < MAX_LEVEL; logLevel++) {
+		if (level == avail_levels[logLevel])
+			break;
 	}
-	for (int i = this->logLevel; i < MAX_LEVEL; i++) {
-		if (level == avail_levels[i]) {
-			(this->*avail_funcs[i])();
-			return;
-		}
+	switch (logLevel) {
+		case 0:
+			this->debug();
+		case 1:
+			this->info();
+		case 2:
+			this->warning();
+		case 3:
+			this->error();
+			break;
+		default:
+			this->insignificant();
 	}
 }
